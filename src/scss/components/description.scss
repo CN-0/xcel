@@ -1,0 +1,169 @@
+.description{
+    display: flex;
+    flex-direction: column;
+    height: 18rem;
+    justify-content: space-between;
+    border-bottom: $line;
+    &__top{
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        height: 13rem;
+        //background-color: gold;
+        &-title{
+            display: flex;
+            flex-direction: column;
+            .title-icon{
+                width: 3rem;
+                height: 3rem;
+                border-radius: 100px;
+                position: relative;
+                z-index: 100;
+                color:$color-grey-dark-1;
+                margin-top: -2rem;
+                margin-left: -1.5rem;
+                background-color: $color-white;
+            }
+            &-maintitle{
+                display: flex;
+                flex-direction: column;
+                padding-left: 4rem;
+                margin-top: -1.5rem;
+                .title{
+                    display: flex;
+                    align-items: center;
+                    h3{
+                        font-size: 3rem;
+                    }
+                }
+                p{
+                    font-size: 1.4rem;
+                    color: $color-grey-dark-1;
+                }
+            }
+        }
+        &-status{
+            display: flex;
+            height: 5rem;
+            .overtop{
+                .overtopsvg{
+                    width: 3rem;
+                    height: 3rem;
+                    color: $color-blue;
+                    padding: .15rem;
+                    margin: 1rem 3rem 1rem -2rem;
+                    border:2px solid $color-blue;
+                    border-radius: 100px;
+                    background-color: $color-white;
+                }
+            }
+            .hexagon-outline{
+                border: $line;
+                display: flex;
+                align-items: center;
+                margin:0rem 1rem;
+                font-size: 2rem;
+                .black{
+                    margin-left: .8rem;
+                }
+                p{
+                    margin-right: 2rem;
+                    margin-left: .5rem;
+                }
+            }
+            .zoom-call{
+                border: $line;
+                border-radius: 50px;
+                padding: .5rem 2rem;
+                margin-right: 1.5rem;
+                display: flex;
+                align-items: center;
+                .zoom{
+                    width: 2rem;
+                    height: 2rem;
+                    background-color: $color-blue;
+                    color: $color-white;
+                    padding: .2rem;
+                    border-radius: 100px;
+                }
+                h3{
+                    font-size: 1.6rem;
+                    margin: 0rem .5rem;
+                }
+            }
+            .activities{
+                display: flex;
+                border: $line;
+                padding: .2rem .5rem;
+                border-radius: 5px;
+                .people{
+                    display: flex;
+                    align-items: center;
+                    font-size: 2rem;
+                    border-right: $line;
+                    p{
+                        margin-right:1rem;
+                    }
+                }
+                .activity{
+                    display: flex;
+                    align-items: center;
+                    font-size: 2rem;
+                    margin: 0rem .5rem;
+                    h3{
+                        font-size: 1.6rem;
+                    }
+                }
+            }
+        }
+        
+    }
+    &__bottom{
+        display: flex;
+        justify-content: space-between;
+        height: 5rem;
+        margin-bottom: .5rem;
+        &-maintable{
+            display: flex;
+            align-items: center;
+            margin-left: 3.5rem;
+            h3{
+                font-size: 1.6rem;
+                font-weight: 400;
+            }
+        }
+        &-actions{
+            display: flex;
+            align-items: center;
+            .new-item{
+                display: flex;
+                align-items: center;
+                height: 4.2rem;
+                padding: 0rem 3rem;
+                background-color: $color-blue-light;
+                border-radius: 50px;
+                h3{
+                    font-size: 1.8rem;
+                    height: 100%;
+                    color: $color-white;
+                    padding: 0.8rem 2rem 0.5rem 0rem;
+                    border-right: 1px solid $color-blue;
+                }
+            }
+            .search{
+                margin: 0rem 1rem;
+                input{
+                    border: $line;
+                    border-radius: 50px;
+                    outline: none;
+                    padding: 1rem 2rem;
+                    font-size: 1.6rem;
+                    &::-webkit-input-placeholder {
+                        color: $color-grey-dark-3;
+                    }
+                }
+            }
+        }
+    }
+    
+}

@@ -1,0 +1,60 @@
+.icon-veryverysmall{
+    width: 1.5rem;
+    height: 1.5rem;
+    color: $color-black;
+}
+
+.icon-verysmall{
+    width: 2rem;
+    height: 2rem;
+    color: $color-white;
+}
+.icon-small{
+    width: 2.8rem;
+    height: 2.8rem;
+    color: $color-white;
+    padding-right: .5rem;
+}
+.icon-medium{
+    width: 4rem;
+    height: 4rem;
+    padding: 1rem;
+    color: $color-white;
+}
+.icon-large{
+    width: 4.5rem;
+    height: 4.5rem;
+    padding: .1rem;
+    color: $color-black;
+    background-color: $color-white;
+    border-radius: 100px;
+    margin:.5rem 0rem;
+    &::before{
+        content: "";
+        width: 1rem;
+        height: 1rem;
+        z-index: 1;
+        color: green;
+    }
+}
+ 
+.icon-mediumlarge{
+    width: 5rem;
+    height: 5rem;
+    padding: 1rem;
+    color: $color-white;
+}
+
+.black{
+    color:$color-black;
+}
+.grey-light{
+    color:$color-grey-light-4;
+}
+.grey-dark{
+    color:$color-grey-dark-2;
+}
+
+.blue{
+    color:$color-blue;
+}
