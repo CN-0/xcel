@@ -3,17 +3,19 @@
     flex-direction: column;
     padding: 4rem 0rem 0rem 1rem;
     max-height: 50rem;
-    align-items: flex-start;
+    //align-items: flex-start;
     &__row{
         display: flex;
         height: 4rem;
+        max-width: 110rem;
+        margin-left: 3.5rem;
         align-items: center;
         position: relative;
         &-svg{
             position: absolute;
             top: -.4rem;
             left: 0;
-            width: 3.5rem;
+            width: 3rem;
             padding-top: .5rem;
             background-color: white;
            
@@ -21,7 +23,7 @@
         &-mygroup{
             position: absolute;
             top: 0;
-            left: 3.5rem;
+            left: 2.5rem;
             z-index: 10;
             width: 50rem;
             font-size: 2rem;
@@ -32,7 +34,7 @@
         &-mygroup-item{
             position: absolute;
             top: 0;
-            left: 3.5rem;
+            left: 0;
             z-index: 10;
             width: 50rem;
             height: 100%;
@@ -57,7 +59,7 @@
             align-items: center;
             font-size: 1.4rem;
             height: 4rem;
-            padding-left: 53.5rem;
+            padding-left: 50rem;
             .todo__row-headers-person{
                 display: flex;
                 align-items: center;
@@ -66,6 +68,7 @@
                 overflow: hidden;
                 width: 10rem;
                 height: 100%;
+                
                 border-right: $line-small;
                 .personicon{
                     height: 4rem!important;
@@ -84,13 +87,31 @@
             .add-icon{
                 width: 5rem;
                 height: 5rem;
-                //transition: all .3s;
             }
             .end{
                 width: 5rem;
                 border-right:1rem solid $color-grey-light-4;
             }
         }
+        
+    }
+    .add-row{
+        background-color: $color-background!important;
+        border: $line;
+        opacity: .7;
+        border-left: .9rem solid rgba($color:$color-blue, $alpha: .8s);
+        border-right:1rem solid $color-grey-light-4;
+        .new-row{
+            display: flex;
+            align-items: center;
+            height: 100%;
+            width: 100%;
+            color: rgba($color: #000000, $alpha: .7);
+            font-size: 1.6rem;
+            font-weight: 400;
+            cursor: pointer;
+        }
+
     }
 }
 .todo .todo__row:not(:first-child) {
@@ -155,7 +176,12 @@
     width: 15rem;
     height: 4rem;
     h4{
+        display: flex;
+        justify-content: center;
+        align-items: center;
         font-weight: 400;
+        width: 100%;
+        height: 100%;
     }
     &__set{
         position: absolute;
@@ -174,22 +200,10 @@
             justify-content: center;
             align-items: center;
             color: $color-white;
-            padding: .5rem .5rem;
+            padding: .5rem .7rem;
             width: 12rem;
             margin-left: 1.5rem;
             margin-bottom: .5rem;
-        }
-        .orange{
-            background-color:$color-orange;
-        }
-        .dark{
-            background-color:$color-blue-dark;
-        }
-        .pink{
-            background-color:$color-pink-light;
-        }
-        .green{
-            background-color:$color-green;
         }
         .add-items{
             display: flex;
@@ -215,3 +229,29 @@
     }
 
 }
+
+.row-input{
+    width: 95%;
+    height: 90%;
+    border: none;
+    outline: none;
+    padding: .1rem 2rem;
+    font-size: 1.4rem;
+    background-color: $color-background;
+    &::-webkit-input-placeholder {
+        font-size: 1.2rem;;
+    }
+}
+.orange{
+    background-color:$color-orange;
+}
+.dark{
+    background-color:$color-blue-dark;
+}
+.pink{
+    background-color:$color-pink-light;
+}
+.green{
+    background-color:$color-green;
+}
+
