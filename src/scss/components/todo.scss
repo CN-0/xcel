@@ -3,11 +3,11 @@
     flex-direction: column;
     padding: 4rem 0rem 0rem 1rem;
     max-height: 50rem;
-    //align-items: flex-start;
+    align-items: flex-start;
     &__row{
         display: flex;
         height: 4rem;
-        max-width: 110rem;
+        //max-width: 110rem;
         margin-left: 3.5rem;
         align-items: center;
         position: relative;
@@ -97,6 +97,7 @@
     }
     .add-row{
         background-color: $color-background!important;
+        min-width: 110rem;
         border: $line;
         opacity: .7;
         border-left: .9rem solid rgba($color:$color-blue, $alpha: .8s);
@@ -150,6 +151,10 @@
         font-size: 1.6rem;
         font-weight: 500;
         color: rgba($color: #000000, $alpha: .7);
+
+        &:hover{
+            background-color: $color-grey-light-1; 
+        }
       }
       .more-columns{
         color: $color-blue;
@@ -182,6 +187,7 @@
         font-weight: 400;
         width: 100%;
         height: 100%;
+        border-right: 1.1rem solid rgba($color: #ffffff, $alpha: .4);
     }
     &__set{
         position: absolute;
@@ -204,6 +210,10 @@
             width: 12rem;
             margin-left: 1.5rem;
             margin-bottom: .5rem;
+            border: 1.5px solid transparent
+        }
+        &-item:hover{
+            border: 1.5px solid $color-green;
         }
         .add-items{
             display: flex;
@@ -242,16 +252,19 @@
         font-size: 1.2rem;;
     }
 }
+.column-input{
+    background-color: $color-grey-light-1;
+}
 .orange{
-    background-color:$color-orange;
+    background-color:rgba($color: $color-orange, $alpha: .8);
 }
 .dark{
-    background-color:$color-blue-dark;
+    background-color:rgba($color: $color-blue-dark, $alpha: .8);
 }
 .pink{
-    background-color:$color-pink-light;
+    background-color:rgba($color: $color-pink-light, $alpha: .8);
 }
 .green{
-    background-color:$color-green;
+    background-color:rgba($color-green, $alpha: .8);
 }
 
