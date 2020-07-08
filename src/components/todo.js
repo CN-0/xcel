@@ -106,7 +106,7 @@ const Todo = () =>{
                 let headerEnd = document.getElementById(`contentDivEnd${i}`)
                 let newElement = document.createElement("div")
                 newElement.className = "todo__row-headers status"
-                newElement.innerHTML = templateholder
+                //newElement.innerHTML = templateholder
                 headerDiv.insertBefore(newElement, headerEnd)
             }
         
