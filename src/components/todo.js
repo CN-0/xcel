@@ -16,6 +16,7 @@ import { IoIosSave } from 'react-icons/io'
 
 const Todo = () =>{
     const [rows, setRows] = useState(0)
+    const [columns,setColumns] = useState([])
     const [showAddRow,setShowAddRow] = useState(false)
     const [rowData,setRowData] = useState({})
     const [statusData, setStatusData] = useState({})
@@ -26,6 +27,12 @@ const Todo = () =>{
         setShowAddRow(true)
     }
     const changeStatus = e =>{
+        const list = e.target.classList
+        let oldRowData = {...rowData}
+        oldRowData[list[2]][list[3]] = {ihtml:e.target.innerHTML,class:e.target.classList[1]} || ""
+        setRowData(oldRowData)
+    }
+    const changeNewStatus = e =>{
         const oldStatusData = {...statusData}
         oldStatusData[e.target.parentElement.getAttribute('id')]={ihtml:e.target.innerHTML,class:e.target.classList[1]}
         setStatusData(oldStatusData)
@@ -38,78 +45,53 @@ const Todo = () =>{
         const staData = {...statusData}
         const index= e.target.getAttribute("id")
         oldRowData[index] = {
-            name:e.target.name.value || "",
-            mystatus:staData[`ss${index}`] || "",
-            date:e.target.date.value || "",
-            contact:e.target.contact.value || ""
+            name:e.target.name.value || ""
         }
+        columns.forEach(column=>{
+            if(column[0]==="Status"){
+                oldRowData[index][column[1]] = staData[`ss${index}`] || ""
+            }else if(column[0]==="People"){
+                oldRowData[index][column[1]] = ""
+            }else{
+                oldRowData[index][column[1]] = e.target[column[1]].value || "";
+            }
+        })
         setRowData(oldRowData)
         document.getElementById("addButton").removeAttribute("disabled")
-        e.target.name.value=""
-        e.target.date.value = ""
-        e.target.contact.value = ""
         setShowAddRow(false)
     }
-    const addColumnELement = e =>{
-        e.preventDefault()
-        console.log(e.target.value)
-    }
+    
     const newColumn = e =>{
         const id= e.target.getAttribute("id")
         if(id){
-            let headerDiv = document.getElementById("columnHeaderDiv")
-            let headerEnd = document.getElementById("columnHeaderEnd")
-            let formElement = document.createElement("FORM")
-            formElement.className = "todo__row-headers"
-            let input = document.createElement("INPUT")
-            input.setAttribute("type", "text");
-            input.setAttribute("placeholder", "name");
-            input.className = "row-input column-input"
-            input.addEventListener('keypress', e => {
-                if (e.keyCode == 13) {
-                    e.preventDefault();
-                    let newElement = document.createElement("div")
-                    newElement.innerHTML = e.target.value
-                    e.target.parentElement.appendChild(newElement)
-                    e.target.parentElement.removeChild(e.target.parentElement.childNodes[0]); 
-                }
-            });
-            formElement.appendChild(input)
-            headerDiv.insertBefore(formElement, headerEnd)
+            setColumns(columns=>{
+                return columns.concat([[id]])
+            })
         }
-        if(id!=="status"){
-            for( let i=1;i<rows+1;i++){
-                let headerDiv = document.getElementById(`contentDiv${i}`)
-                let headerEnd = document.getElementById(`contentDivEnd${i}`)
-                let newElement = document.createElement("FORM")
-                newElement.className = "todo__row-headers"
-                let input = document.createElement("INPUT")
-                input.setAttribute("type", "text");
-                input.setAttribute("placeholder", "name");
-                input.className = "row-input column-input"
-                input.addEventListener('keypress', e => {
-                    if (e.keyCode == 13) {
-                        e.preventDefault();
-                        let newElement = document.createElement("div")
-                        newElement.innerHTML = e.target.value
-                        e.target.parentElement.appendChild(newElement)
-                        e.target.parentElement.removeChild(e.target.parentElement.childNodes[0]); 
-                    }
-                });
-                newElement.appendChild(input)
-                headerDiv.insertBefore(newElement, headerEnd)
-            }
-        }else{
-            //let templateholder = '<h4></h4><div className="status__set"><div className="status__set-item orange">working on it</div><div className="status__set-item dark">critical</div><div  className="status__set-item pink">stuck</div><div className="status__set-item green">done</div><div className="add-items"><BsPencil className="icon-veryverysmall blue"/><a>Add/Edit Labels</a></div></div>'
-            for(let i=1;i<rows+1;i++){
-                let headerDiv = document.getElementById(`contentDiv${i}`)
-                let headerEnd = document.getElementById(`contentDivEnd${i}`)
-                let newElement = document.createElement("div")
-                newElement.className = "todo__row-headers status"
-                //newElement.innerHTML = templateholder
-                headerDiv.insertBefore(newElement, headerEnd)
-            }
-        
+    }
+    const onHeadingInput = e =>{
+        const id= e.target.getAttribute("id")
+        if (e.keyCode == 13) {
+            e.preventDefault();
+            let value = e.target.value
+            let newElement = document.createElement("div")
+            newElement.innerHTML = value
+            e.target.parentElement.appendChild(newElement)
+            e.target.parentElement.removeChild(e.target.parentElement.childNodes[0]);
+            let oldColumns = [...columns]
+            oldColumns[id][1] = value 
+            setColumns(oldColumns)
+        }
+    }
+    const onInput = e =>{
+        const list= e.target.classList
+        const id= e.target.getAttribute("id")
+        if (e.keyCode == 13) {
+            e.preventDefault();
+            let value = e.target.value
+            let oldRowData = {...rowData}
+            oldRowData[list[2]][list[3]] = value 
+            setRowData(oldRowData)
         }
     }
      return(
@@ -122,62 +104,57 @@ const Todo = () =>{
                     My group
                 </div>
                 <div id="columnHeaderDiv" className="todo__row-content">
-                    <div className="todo__row-headers-person">
-                        Person
-                    </div>
-                    <div className="todo__row-headers">
-                        My Status
-                    </div>
-                    <div className="todo__row-headers">
-                        Date
-                    </div>
-                    <div className="todo__row-headers">
-                        contact
-                    </div>
+                    {columns.map((column,index)=>{
+                        if(column[0]==="People"){
+                            return <div key={index} className="todo__row-headers-person"><input id={index} type="text" placeholder="name" onKeyDown={onHeadingInput} className="row-input column-input" /></div>
+                        }else{
+                            return <div key={index} className="todo__row-headers"><input id={index} type="text" placeholder="name" onKeyDown={onHeadingInput} className="row-input column-input" /></div>
+                        }
+                    })}
                     <div id="columnHeaderEnd" className="add-icon todo__row-headers">
-                    <input style={{display:"none"}} type="checkbox" id="btnControl"/>
-                    <label className="label" htmlFor="btnControl">
-                        <IoMdAddCircle className="icon-mediumlarge rot blue"/>
-                        <div onClick={newColumn} style={{cursor:"pointer"}} className="new-column">
-                            <div id="status" className="new-column-item">
-                                <FiMenu className="colicon grey-dark"/>
-                                Status
+                        <input style={{display:"none"}} type="checkbox" id="btnControl"/>
+                        <label className="label" htmlFor="btnControl">
+                            <IoMdAddCircle className="icon-mediumlarge rot blue"/>
+                            <div onClick={newColumn} style={{cursor:"pointer"}} className="new-column">
+                                <div id="Status" className="new-column-item">
+                                    <FiMenu className="colicon grey-dark"/>
+                                    Status
+                                </div>
+                                <div id="Text" className="new-column-item">
+                                    <MdTextFields className="colicon grey-dark"/>
+                                    Text
+                                </div>
+                                <div id="People" className="new-column-item">
+                                    <BsPeople className="colicon grey-dark"/>
+                                    People
+                                </div>
+                                <div id="Timeline" className="new-column-item">
+                                    <TiThMenuOutline className="colicon grey-dark"/>
+                                    Timeline
+                                </div>
+                                <div id="Date" className="new-column-item">
+                                    <GoCalendar className="colicon grey-dark"/>
+                                    Date
+                                </div>
+                                <div id="Tags" className="new-column-item">
+                                    <FaHashtag className="colicon grey-dark"/>
+                                    Tags
+                                </div>
+                                <div id="Numbers" className="new-column-item">
+                                    <FaCalculator className="colicon grey-dark"/>
+                                    Numbers
+                                </div>
+                                <div id="Morecolumns" className="more-columns">
+                                    More columns
+                                </div>
                             </div>
-                            <div id="text" className="new-column-item">
-                                <MdTextFields className="colicon grey-dark"/>
-                                Text
-                            </div>
-                            <div id="people" className="new-column-item">
-                                <BsPeople className="colicon grey-dark"/>
-                                People
-                            </div>
-                            <div id="timeline" className="new-column-item">
-                                <TiThMenuOutline className="colicon grey-dark"/>
-                                Timeline
-                            </div>
-                            <div id="date" className="new-column-item">
-                                <GoCalendar className="colicon grey-dark"/>
-                                Date
-                            </div>
-                            <div id="tags" className="new-column-item">
-                                <FaHashtag className="colicon grey-dark"/>
-                                Tags
-                            </div>
-                            <div id="numbers" className="new-column-item">
-                                <FaCalculator className="colicon grey-dark"/>
-                                Numbers
-                            </div>
-                            <div id="morecolumns" className="more-columns">
-                                More columns
-                            </div>
-                        </div>
                         </label>
-                        
                     </div>
                 </div>
             </div>
-            {Object.keys(rowData).length>0?Object.keys(rowData).map(row=>{
-                return(<div key={row} className="todo__row">
+    {Object.keys(rowData).length>0?Object.keys(rowData).map(row=>{
+        return(
+            <div key={row} className="todo__row">
                 <div className="todo__row-mygroup-item">
                     <h3>
                         {rowData[row].name}
@@ -187,90 +164,108 @@ const Todo = () =>{
                     </div>
                 </div>
                 <div  id={`contentDiv${row}`} className="todo__row-content">
-                    <div className="todo__row-headers-person">
-                        <FaRegUserCircle style={{padding:"1.3rem"}} className="icon-mediumlarge personicon grey-dark"/>
-                    </div>
-                    <div className="todo__row-headers status">
-                    <h4 className={rowData[row].mystatus.class} >{rowData[row].mystatus.ihtml}</h4>
-                        <div className="status__set">
-                            <div  onClick={changeStatus} className="status__set-item orange">
-                                working on it
-                            </div>
-                            <div  onClick={changeStatus} className="status__set-item dark">
-                                critical
-                            </div>
-                            <div  onClick={changeStatus} className="status__set-item pink">
-                                stuck
-                            </div>
-                            <div  onClick={changeStatus} className="status__set-item green">
-                                done
-                            </div>
-                            <div  onClick={changeStatus} className="add-items">
-                                <BsPencil className="icon-veryverysmall blue"/>
-                                <a>Add/Edit Labels</a>
-                            </div>
-                        </div>
-                    </div>
-                    <div className="todo__row-headers">
-                        {rowData[row].date}
-                    </div>
-                    <div className="todo__row-headers">
-                        {rowData[row].contact}
-                    </div>
+                    {columns.map(column=>{
+                        if(column[0]==="People"){
+                            return (
+                                <div className="todo__row-headers-person">
+                                    <FaRegUserCircle style={{padding:"1.3rem"}} className="icon-mediumlarge personicon grey-dark"/>
+                                </div>)
+                        }else if(column[0]==="Status"){
+                            return(
+                                <div key={column[1]} className="todo__row-headers status">
+                                    <h4 className={rowData[row][column[1]]?rowData[row][column[1]].class:null}>{rowData[row][column[1]]?rowData[row][column[1]].ihtml:null}</h4>
+                                    <div className="status__set">
+                                        <div  onClick={changeStatus} className={`status__set-item orange ${row} ${column[1]}`}>
+                                            working on it
+                                        </div>
+                                        <div  onClick={changeStatus} className={`status__set-item dark ${row} ${column[1]}`}>
+                                            critical
+                                        </div>
+                                        <div  onClick={changeStatus} className={`status__set-item pink ${row} ${column[1]}`}>
+                                            stuck
+                                        </div>
+                                        <div  onClick={changeStatus} className={`status__set-item green ${row} ${column[1]}`}>
+                                            done
+                                        </div>
+                                        <div  onClick={changeStatus} className="add-items">
+                                            <BsPencil className="icon-veryverysmall blue"/>
+                                            <a>Add/Edit Labels</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            )
+                        }else{
+                            return(
+                                <div key={column[0]} className="todo__row-headers">
+                                    {rowData[row][column[1]]?rowData[row][column[1]]:<input id={column[1]} type="text" placeholder="name" onKeyDown={onInput} className={`row-input column-input ${row} ${column[1]}`} />}
+                                </div>
+                            )
+                        }
+                    })}
                     <div id={`contentDivEnd${row}`} className="todo__row-headers end">
                     </div>
                 </div>
                 
             </div>)
-            }):null}
+    }):null}
             
-            {showAddRow?<form type="submit" id={rows}  onSubmit={newRowData} className="todo__row">
-    <div className="todo__row-mygroup-item">
-        <input id="name" className="row-input" autoComplete="off" required placeholder="Enter name of the project" type="text"/>
-    </div>
-    <div className="todo__row-content">
-        <div className="todo__row-headers-person">
-            <FaRegUserCircle style={{padding:"1.3rem"}} className="icon-mediumlarge personicon grey-dark"/>
+    {showAddRow?
+    <form type="submit" id={rows}  onSubmit={newRowData} className="todo__row">
+        <div className="todo__row-mygroup-item">
+            <input id="name" className="row-input" autoComplete="off" required placeholder="Enter name of the project" type="text"/>
         </div>
-        <div className="todo__row-headers status">
-        <h4>My Status</h4>
-        <div id={`ss${rows}`} className="status__set">
-            <div  onClick={changeStatus} className="status__set-item orange">
-                working on it
-            </div>
-            <div  onClick={changeStatus} className="status__set-item dark">
-                critical
-            </div>
-            <div  onClick={changeStatus} className="status__set-item pink">
-                stuck
-            </div>
-            <div  onClick={changeStatus} className="status__set-item green">
-                done
-            </div>
-            <div className="add-items">
-                <BsPencil className="icon-veryverysmall blue"/>
-                <a>Add/Edit Labels</a>
-            </div>
+        <div className="todo__row-content">
+            {columns.map(column=>{
+                if(column[0]==="People"){
+                    return (
+                        <div key={column[1]} className="todo__row-headers-person">
+                            <FaRegUserCircle style={{padding:"1.3rem"}} className="icon-mediumlarge personicon grey-dark"/>
+                        </div>)
+                }else if(column[0]==="Status"){
+                    return(
+                        <div key={column[1]} className="todo__row-headers status">
+                            <h4>My Status</h4>
+                            <div id={`ss${rows}`} className="status__set">
+                                <div  onClick={changeNewStatus} className="status__set-item orange">
+                                    working on it
+                                </div>
+                                <div  onClick={changeNewStatus} className="status__set-item dark">
+                                    critical
+                                </div>
+                                <div  onClick={changeNewStatus} className="status__set-item pink">
+                                    stuck
+                                </div>
+                                <div  onClick={changeNewStatus} className="status__set-item green">
+                                    done
+                                </div>
+                                <div className="add-items">
+                                    <BsPencil className="icon-veryverysmall blue"/>
+                                    <a>Add/Edit Labels</a>
+                                </div>
+                            </div>
+                        </div>
+                    )
+                }else{
+                    return(
+                        <div key={column[1]} className="todo__row-headers">
+                            <input id={column[1]} type="text"  autoComplete="off" className="row-input" />
+                        </div>
+                    )
+                }
+            })}
+            <button style={{border:"none",outline:"none"}} type="submit" className="todo__row-headers end">
+                <IoIosSave style={{cursor:"pointer"}} className="icon-small black"/>
+            </button>
         </div>
-        </div>
-        <div className="todo__row-headers">
-            <input id="date" type="text"  autoComplete="off" className="row-input" />
-        </div>
-        <div className="todo__row-headers">
-            <input id="contact" autoComplete="off" type="text" className="row-input" />
-        </div>
-        <button style={{border:"none",outline:"none"}} type="submit" className="todo__row-headers end">
-            <IoIosSave style={{cursor:"pointer"}} className="icon-small black"/>
+    </form>
+    :null}
+
+    <div className="todo__row add-row">
+        <button id="addButton" style={{border:"none",outline:"none",paddingLeft:"2rem"}} onClick={addRow} className="new-row">
+            +Add
         </button>
     </div>
-    </form>:null}
-
-            <div className="todo__row add-row">
-                <button id="addButton" style={{border:"none",outline:"none",paddingLeft:"2rem"}} onClick={addRow} className="new-row">
-                    +Add
-                </button>
-            </div>
-        </div>
+</div>
     )
 }
 

@@ -12,7 +12,11 @@ const SideIconsbar = () =>{
     return(
         <div className="sideiconsbar">
             <div className="sideiconsbar__top">
-                <FaUserCircle  className="icon-large"/>
+                <div className="menu-box">
+                <span className="menu-bar">
+                    &nbsp;
+                </span>
+                </div>
                 <FaRegBell  className="icon-medium"/>
                 <TiDownload className="icon-medium"/>
             </div>
@@ -27,7 +31,7 @@ const SideIconsbar = () =>{
                 <AiOutlineUserAdd className="icon-medium"/>
                 <FiSearch className="icon-medium"/>
                 <BsQuestion className="icon-mediumlarge"/>
-                <div>
+                <div className="profile-img">
                     <FaUserCircle className="icon-large"/>
                 </div>
             </div>
