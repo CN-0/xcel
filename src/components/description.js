@@ -4,10 +4,10 @@ import { BsStarFill } from 'react-icons/bs'
 import { FaUserCircle } from 'react-icons/fa'
 import { FaRegUserCircle } from 'react-icons/fa'
 import { AiOutlineFolderView } from 'react-icons/ai'
-import { GrConnect } from 'react-icons/gr'
+import { GiPlug } from 'react-icons/gi'
 import { FaRobot } from 'react-icons/fa'
 import { IoIosVideocam } from 'react-icons/io'
-import { BsFillPeopleFill } from 'react-icons/bs'
+import { BsPeople } from 'react-icons/bs'
 import { BsThreeDots } from 'react-icons/bs'
 import { RiTableLine } from 'react-icons/ri'
 import { BsChevronDown } from 'react-icons/bs'
@@ -20,12 +20,12 @@ const Description = () =>{
     <div className="description">
         <div className="description__top">
             <div className="description__top-title">
-                <AiOutlineLeftCircle className="title-icon"/>
+                <AiOutlineLeftCircle className="title-icon black-light"/>
                 <div className="description__top-title-maintitle">
                     <div className="title" >
-                        <h3>
+                        <p>
                             Web design
-                        </h3>
+                        </p>
                         <BsStarFill className="icon-medium black grey-light"/>
                     </div>
                     <p>
@@ -38,54 +38,58 @@ const Description = () =>{
                     <FaUserCircle className="icon-mediumlarge black"/>
                     <AiOutlineFolderView className="overtopsvg" />
                 </div>
-                <div style={{marginLeft:"-.5rem"}} className="hexagon-outline">
-                    <GrConnect className="icon-medium black"/><span>/</span><p>0</p>
-                </div>
+                <div className="hexagon-outline-box">
                 <div className="hexagon-outline">
-                    <FaRobot className="icon-medium black"/><span>/</span><p>0</p>
+                    <GiPlug style={{transform:"rotate(270deg)", marginRight:".3rem",padding:".1rem" }}  /><span>/</span><p>0</p>
+                </div>
+                </div>
+                <div className="hexagon-outline-box">
+                <div className="hexagon-outline">
+                    <FaRobot style={{marginRight:".6rem"}} className="icon-verysmall black-light"/><span>/</span><p>0</p>
+                </div>
                 </div>
                 <div className="zoom-call">
                     <IoIosVideocam className="zoom"/>
-                    <h3>
+                    <p>
                         Start Zoom call
-                    </h3>
+                    </p>
                 </div>
                 <div className="activities">
                     <div className="people">
-                        <BsFillPeopleFill className="icon-medium black"/><span>
+                        <BsPeople style={{marginRight:".5rem"}} className="icon-verysmall black-light"/><span>
                             /
                         </span><p>1</p>
                     </div>
                     <div className="activity">
-                        <h3>Activities</h3><span>
+                        <p>Activities</p><span>
                             /
                         </span><p>1</p>
                     </div>
                 </div>
-                <BsThreeDots style={{color:"black",marginLeft:".5rem",marginRight:"2.5rem"}} className="icon-mediumlarge"/>
+                <BsThreeDots style={{marginLeft:"1.2rem",marginRight:"2.5rem",marginTop:".6rem"}} className="icon-small black-light"/>
             </div>
         </div>
         <div className="description__bottom">
             <div className="description__bottom-maintable">
-                <RiTableLine style={{padding:".7rem"}} className="icon-medium black"/>
+                <RiTableLine style={{padding:".9rem"}} className="icon-medium black-light"/>
                 <h3>
                     Main Table
                 </h3>
-                <BsChevronDown style={{marginLeft:"1.5rem"}} className="icon-veryverysmall black"/>
+                <BsChevronDown style={{marginLeft:"1.5rem",padding:".2rem"}} className="icon-veryverysmall black"/>
             </div>
             <div className="description__bottom-actions">
                 <div className="new-item">
-                    <h3>
+                    <p>
                         New Item
-                    </h3>
-                    <BsChevronDown style={{marginRight:"-2rem",marginLeft:".5rem",color:"white",strokeWidth:"1.5"}} className="icon-veryverysmall black"/>
+                    </p>
+                    <BsChevronDown style={{margin:".2rem -2rem 0rem .5rem",color:"white",strokeWidth:"1.5",padding:".2rem"}} className="icon-veryverysmall"/>
                 </div>
                 <div className="search">
                     <input type="text" placeholder="Search/Filter Board"/>
                 </div>
-                <FaRegUserCircle className="icon-mediumlarge grey-dark"/>
-                <AiFillEyeInvisible className="icon-mediumlarge grey-dark"/>
-                <MdSort style={{marginRight:"2.5rem"}} className="icon-mediumlarge black"/>
+                <FaRegUserCircle className="icon-small black-light margin-side-small"/>
+                <AiFillEyeInvisible className="icon-small black-light margin-side-small"/>
+                <MdSort style={{marginRight:"2.5rem",marginLeft:"1rem"}} className="icon-small black-light"/>
             </div>
         </div>
 

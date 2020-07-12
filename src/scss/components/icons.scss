@@ -7,26 +7,27 @@
 .icon-verysmall{
     width: 2rem;
     height: 2rem;
-    color: $color-white;
+    color: $color-grey-light-1;
 }
 .icon-small{
     width: 2.8rem;
     height: 2.8rem;
-    color: $color-white;
+    color: $color-grey-light-1;
     padding-right: .5rem;
 }
 .icon-medium{
-    width: 4rem;
-    height: 4rem;
+    width: 4.2rem;
+    margin: .2rem 0rem;
+    height: 4.2rem;
     padding: 1rem;
-    color: $color-white;
+    color: $color-grey-light-1;
 }
 .icon-large{
     width: 45px;
     height: 45px;
     padding: 1.5px;
     color: $color-black;
-    background-color: $color-white;
+    background-color: $color-grey-light-1;
     border-radius: 100px;
     margin:5px 0px;
     &::before{
@@ -53,7 +54,20 @@
 .grey-dark{
     color:$color-grey-dark-2;
 }
-
+.black-light{
+    color:rgba($color: #000000, $alpha: .7);
+}
 .blue{
     color:$color-blue;
+}
+.margin-side-small{
+    margin: 0rem .7rem;
+}
+
+.margin-left-small{
+    margin-left: 3.5rem;
+}
+
+.backgroundcolor-transparent{
+    background-color: rgba($color:$color-background, $alpha:.9);
 }

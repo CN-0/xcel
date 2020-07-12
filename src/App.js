@@ -8,11 +8,13 @@ import Todo from './components/todo'
 const App = () =>(
 
     <div className="app">
-        <SideIconsbar/>
-        <Sidebar/>
-        <div className="app__content">
-            <Description/>
-            <Todo/>
+        <SideIconsbar />
+        <Sidebar />
+        <div className="app-content">
+        <Description />
+        <div className="todo-content">
+            <Todo />
+        </div>
         </div>
     </div>
 )

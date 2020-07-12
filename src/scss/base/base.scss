@@ -31,9 +31,9 @@ $color-dark-dark: #0d1723;
 $color-blue-light:#3bb9ff;
 $color-blue:#157dec;
 $color-background:#fefeff;
-
+$color-voilet-pink:#ec47d1;
 $default-font-size:1.6rem;
-
+$color-black-light:rgba(0,0,0,.7);
 $shadow-dark: 0 2rem 6rem rgba(0,0,0,.3);
 $shadow-medium: 0 2rem 6rem rgba(0,0,0,.1);
 $shadow-light: 0 2rem 5rem rgba(0,0,0,.06);
@@ -49,15 +49,12 @@ $bp-medium: 56.25em;   // 900px
 $bp-small: 45.5em;     // 720px
 $bp-smallest: 31.25em; // 500px
 
-* {
-margin: 0;
-padding: 0;
-}
-
 *,
 *::before,
 *::after {
     box-sizing: inherit;
+    margin: 0;
+    padding: 0;
 }
 
 html {
@@ -70,6 +67,5 @@ body {
     line-height: 1.6;
     color: rgba($color: #000000, $alpha: .75);
     font-family: sans-serif ;
-    height: 100vh;
-    width: 100%;
+    
 }

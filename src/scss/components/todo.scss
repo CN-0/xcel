@@ -1,44 +1,30 @@
+.todo-content{
+    overflow: hidden;
+    width: 100%;
+}
+
 .todo{
     display: flex;
     flex-direction: column;
+    height: 80rem;
     padding: 4rem 0rem 0rem 1rem;
     max-height: 50rem;
     align-items: flex-start;
     &__row{
         display: flex;
+        flex-direction: column;
         height: 4rem;
-        //max-width: 110rem;
-        margin-left: 3.5rem;
         align-items: center;
         position: relative;
-        &-svg{
-            position: absolute;
-            top: -.4rem;
-            left: 0;
-            width: 3rem;
-            padding-top: .5rem;
-            background-color: white;
-           
-        }
-        &-mygroup{
-            position: absolute;
-            top: 0;
-            left: 2.5rem;
-            z-index: 10;
-            width: 50rem;
-            font-size: 2rem;
-            flex-shrink: 0;
-            padding: .3rem 0rem 0rem .8rem;
-            color: $color-blue;
-        }
         &-mygroup-item{
             position: absolute;
             top: 0;
             left: 0;
             z-index: 10;
-            width: 50rem;
+            width: 46.5rem;
             height: 100%;
             display: flex;
+            background-color: inherit;
             flex-shrink: 0;
             align-items: center;
             padding: 0rem 1rem 0rem 2rem;
@@ -59,7 +45,7 @@
             align-items: center;
             font-size: 1.4rem;
             height: 4rem;
-            padding-left: 50rem;
+            position: relative;
             .todo__row-headers-person{
                 display: flex;
                 align-items: center;
@@ -87,10 +73,7 @@
             .add-icon{
                 width: 5rem;
                 height: 5rem;
-            }
-            .end{
-                width: 5rem;
-                border-right:1rem solid $color-grey-light-4;
+                margin-right: 5rem;
             }
         }
         
@@ -115,10 +98,12 @@
 
     }
 }
-.todo .todo__row:not(:first-child) {
-    background-color: rgba($color: $color-dark-verylight, $alpha: .1);
-    border-bottom: $line-small;
+.end{
+    width: 4rem;
+    border-right:1rem solid $color-grey-light-4;
+    //margin-right: 5rem;
 }
+
 #btnControl:checked + label > .rot {
     transform: rotateZ(45deg);
 }
@@ -126,15 +111,16 @@
     display: flex;
 }
 .label{
-  width: 5rem;
-  height: 5rem;
+  width: 4rem;
+  height: 4rem;
   display: flex;
   justify-content: center;
   align-items: center;
-  padding: .4rem;  
+  //padding: .4rem;  
   position: relative;
   .new-column{
       position: absolute;
+      cursor: pointer;
       top: 4rem;
       left: -14rem;
       z-index: 50;
@@ -240,21 +226,6 @@
 
 }
 
-.row-input{
-    width: 95%;
-    height: 90%;
-    border: none;
-    outline: none;
-    padding: .1rem 2rem;
-    font-size: 1.4rem;
-    background-color: $color-background;
-    &::-webkit-input-placeholder {
-        font-size: 1.2rem;;
-    }
-}
-.column-input{
-    background-color: $color-grey-light-1;
-}
 .orange{
     background-color:rgba($color: $color-orange, $alpha: .8);
 }
@@ -266,5 +237,90 @@
 }
 .green{
     background-color:rgba($color-green, $alpha: .8);
+}
+
+.todo{
+    .todo-data{
+        width: 100%;
+        display: flex;
+        .todo-left{
+           display: flex;
+           flex-direction: column;
+           width: 50rem;
+           &-header{
+            display: flex;
+            //width: 50rem;
+            height: 4rem;
+            align-items: center;
+            position: relative;
+            &-item{
+                position: absolute;
+                top: 0;
+                left: 0;
+                z-index: 10;
+                width: 46.5rem;
+                height: 100%;
+                display: flex;
+                background-color: inherit;
+                flex-shrink: 0;
+                align-items: center;
+            }
+            &-svg{
+                position: absolute;
+                display: flex;
+                align-items: center;
+                top: -.1rem;
+                left: .5rem;
+                width: 3rem;
+                height: 4rem;
+                padding: .25rem;
+                background-color: white;
+               
+            }
+            &-mygroup{
+                position: absolute;
+                top: 0;
+                left: 2.5rem;
+                z-index: 10;
+                font-size: 2rem;
+                flex-shrink: 0;
+                padding: .3rem 0rem 0rem .8rem;
+                color: $color-blue;
+            }
+           } 
+        }
+        .todo-content-box{
+            background-color: $color-grey-light-1;
+        }
+        .todo-end{
+            display: flex;
+            flex-direction: column;
+            .add-icon{
+                width: 4rem;
+                height: 4rem;
+                margin-right: 5rem;
+            }
+        }
+    }
+}
+.todo-content-box{
+    display: flex;
+    flex-direction: column;
+}
+
+.row-input{
+    width: 90%;
+    height: 95%;
+    border: none;
+    outline: none;
+    padding: .1rem 2rem;
+    font-size: 1.4rem;
+    background-color: $color-background;
+    &::-webkit-input-placeholder {
+        font-size: 1.2rem;;
+    }
+}
+.column-input{
+    background-color: $color-grey-light-1;
 }
 

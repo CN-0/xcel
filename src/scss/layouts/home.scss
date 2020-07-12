@@ -1,12 +1,13 @@
 .app{
-    width: 100%;
     height: 100vh;
-   // background-color: $color-background;
+    width: 100vw;
+    overflow: hidden;
     display: flex;
-    &__content{
+    &-content{
         display: flex;
         flex-direction: column;
-        flex-grow: 1;
+        width: calc(100vw - 31.5rem);
+        align-items: center;
     }
 }
 
@@ -15,21 +16,22 @@
     flex-direction: column;
     justify-content: space-between;
     flex-shrink: 0;
-    width: 6rem;
+    width: 6.5rem;
     height: 100%;
     background-color: $color-dark-ultralight;
     &__top{
         display: flex;
         flex-direction: column;
         align-items: center;
+        padding-top: .8rem;
     }
     &__middle{
         position: relative;
         .rot{
             display: flex;
-            padding: .5rem 2rem;
+            padding: .4rem 2.5rem .2rem 1.5rem;
             margin-top: 8rem;
-            color: $color-white;
+            color: $color-grey-light-1;
             font-size: 1.4rem;
             background-color: $color-green-dark;
             position: absolute;
@@ -48,17 +50,16 @@
     }
     .menu-box{
         width: 5rem;
-        height: 4rem;
-        padding-top: 1rem;
-        padding-left: 1.5rem;
+        height: 5rem;
         transform: rotate(300deg);
+        padding: 1.4rem;
     }
     .menu-bar{
         position: relative;
         &,
         &::before,
         &::after{
-            width: 2rem;
+            width: 2.2rem;
             height: 7.2px;
             border-radius: 500px;
             background-color: $color-pink-light;
@@ -103,6 +104,22 @@
             background-color: $color-pink-light;
         }
     }
+    .download-count{
+        position: relative;
+        margin-top: .5rem;
+        span{
+            position: absolute;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 1.5rem;
+            height: 1.5rem;
+            border-radius: 10px;
+            top: 0;
+            right: 2px;
+            background-color: $color-grey-light-1;
+        }
+    }
 }
 .sidebar{
     display: flex;
@@ -140,6 +157,9 @@
                 outline: none;
                 font-size: 1.4rem;
                 padding: .5rem 1rem .5rem 4rem;
+                &::-webkit-input-placeholder {
+                    color: $color-grey-light-6;
+                }
             }
         }
     }
@@ -170,49 +190,57 @@
 }
 
 .dropdown{
-    position: relative;
-    height: 3rem;
     width: 100%;
-    .dropdown-btn{
+    height: 3rem;
+    margin-top: 2rem;
+    position: relative;
+    &-btn{
+        width: 100%;
+        height: 100%;
         display: flex;
-        align-content: center;
+        align-items: center;
         .dropdownsvg{
             margin-right: .5rem;
             color:$color-blue-light;
         }
-        .svgrotate{
-            margin: .8rem .5rem 0rem .5rem;
+        .homeicon{
+            width: 2.2rem;
+            height: 2.3rem;
+            background-color: rgba($color: $color-voilet-pink, $alpha: .6);
+            padding: .3rem;
+            border-radius: 8px;
+            color: $color-white;
+            margin-left: .6rem;
         }
         h3{
             margin-right: auto;
             font-size: 1.6rem;
-            padding: .2rem 1rem;
-        }
-        &:hover .svgrotate{
-            transform: rotate(90deg);
-            transform-origin: 50% 50%;
+            padding: .2rem .6rem;
         }
     }
-    .dropdown-content{
+    &-content{
         position: absolute;
-        z-index: 1000;
         width: 100%;
         display: none;
         flex-direction: column;
-        padding-left: 2.5rem;
+        padding-left: 3.2rem;
         padding-right: 1rem;
         &-link{
-            padding: .4rem 1rem;
-            font-size: 1.6rem;
+            padding: .4rem 1.5rem;
+            font-size: 1.5rem;
+            font-weight: 400;
             border-radius: 5px;
-            color: $color-black;
+            color: rgba($color: #000000, $alpha: .7);
             &:hover{
                 background-color: rgba($color-blue-light,.4);
                 color: $color-blue;
             }
         }
     }
-    &:hover &-content{
-        display: flex;
-    }
+}
+#homeControl:checked + label > .dropdown-btn > .svgrotate {
+    transform: rotateZ(90deg);
+}
+#homeControl:checked + label > .dropdown-content {
+    display: flex;
 }

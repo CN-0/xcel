@@ -18,16 +18,19 @@ const SideIconsbar = () =>{
                 </span>
                 </div>
                 <FaRegBell  className="icon-medium"/>
-                <TiDownload className="icon-medium"/>
+                <div className="download-count">
+                    <TiDownload style={{padding:".85rem"}} className="icon-medium"/>
+                    <span>1</span>
+                </div>
             </div>
             <div className="sideiconsbar__middle">
                 <div className="rot">
                     <WiStars className="icon-small"/>
-                    <h3>Upgrade</h3>
+                    <p>Upgrade</p>
                 </div>
             </div>
             <div className="sideiconsbar__bottom">
-                <FaRegCalendar className="icon-medium"/>
+                <FaRegCalendar style={{padding:"1.2rem"}} className="icon-medium"/>
                 <AiOutlineUserAdd className="icon-medium"/>
                 <FiSearch className="icon-medium"/>
                 <BsQuestion className="icon-mediumlarge"/>

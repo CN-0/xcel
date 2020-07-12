@@ -4,7 +4,7 @@ import { FaGooglePlay } from 'react-icons/fa'
 import { FiSearch } from 'react-icons/fi'
 import { AiFillCaretRight } from 'react-icons/ai'
 import { AiFillCaretDown } from 'react-icons/ai'
-import { FcHome } from 'react-icons/fc'
+import { FaHome } from 'react-icons/fa'
 import { BsPlusCircle } from 'react-icons/bs'
 
 const Sidebar = () =>{
@@ -19,16 +19,21 @@ const Sidebar = () =>{
                     <input type="text" placeholder="Filter boards..."/>
                 </div>
                 <div className="dropdown">
-                    <div className="dropdown-btn">
-                        <AiFillCaretRight className="icon-veryverysmall svgrotate"/>
-                        <FcHome className="icon-small"/>
+                    <input style={{display:"none"}} type="checkbox" id="homeControl"/>
+                    <label htmlFor="homeControl">
+                        <div className="dropdown-btn">
+                        <AiFillCaretRight style={{marginLeft:".2rem"}} className="icon-veryverysmall svgrotate"/>
+                        <div className="homeicon">
+                        <FaHome style={{width:"1.5rem",height:"1.5rem"}} />
+                        </div>
                         <h3>Main</h3>
                         <BsPlusCircle className="icon-small dropdownsvg"/>
-                    </div>
-                    <div className="dropdown-content">
-                        <div className="dropdown-content-link">Web design</div>
-                        <div className="dropdown-content-link">bvghbfh</div>
-                    </div>
+                        </div>
+                        <div className="dropdown-content">
+                            <div className="dropdown-content-link">Web design</div>
+                            <div className="dropdown-content-link">bvghbfh</div>
+                        </div>
+                    </label>                    
                 </div>
             </div>
             <div className="sidebar__bottom">
