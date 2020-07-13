@@ -14,7 +14,8 @@
         display: flex;
         flex-direction: column;
         height: 4rem;
-        align-items: center;
+        //justify-content: flex-end;
+        //align-items: center;
         position: relative;
         &-mygroup-item{
             position: absolute;
@@ -51,7 +52,7 @@
                 align-items: center;
                 justify-content: center;
                 flex-shrink: 0;
-                overflow: hidden;
+                background-color: $color-grey-light-1;
                 width: 10rem;
                 height: 100%;
                 
@@ -69,6 +70,7 @@
                 flex-shrink: 0;
                 width: 15rem;
                 border-right: $line-small;
+                background-color: $color-grey-light-1;
             }
             .add-icon{
                 width: 5rem;
@@ -123,7 +125,7 @@
       cursor: pointer;
       top: 4rem;
       left: -14rem;
-      z-index: 50;
+      z-index: 150;
       border-radius: 5px;
       display: none;
       height: 35.5rem;
@@ -242,14 +244,15 @@
 .todo{
     .todo-data{
         width: 100%;
+        max-height: 80rem;
         display: flex;
+        position: relative;
         .todo-left{
            display: flex;
            flex-direction: column;
            width: 50rem;
            &-header{
             display: flex;
-            //width: 50rem;
             height: 4rem;
             align-items: center;
             position: relative;
@@ -258,7 +261,7 @@
                 top: 0;
                 left: 0;
                 z-index: 10;
-                width: 46.5rem;
+                width: 50rem;
                 height: 100%;
                 display: flex;
                 background-color: inherit;
@@ -289,12 +292,11 @@
             }
            } 
         }
-        .todo-content-box{
-            background-color: $color-grey-light-1;
-        }
         .todo-end{
             display: flex;
             flex-direction: column;
+            position: absolute;
+            left: 110rem;
             .add-icon{
                 width: 4rem;
                 height: 4rem;
@@ -306,6 +308,11 @@
 .todo-content-box{
     display: flex;
     flex-direction: column;
+    width: 60rem;
+    height: 80rem;
+    position: absolute;
+    left: 50rem;
+    overflow-x: hidden;
 }
 
 .row-input{

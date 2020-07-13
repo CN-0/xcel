@@ -6,11 +6,22 @@
     justify-self: center;
     justify-content: space-between;
     border-bottom: $line;
+    @media only screen and (max-width: $bp-medium) {
+        height: 25rem;
+        justify-content: start;
+    }
+    @media only screen and (max-width: $bp-smallest) {
+        overflow: hidden;
+    }
     &__top{
         display: flex;
         align-items: center;
         justify-content: space-between;
         height: 13rem;
+        @media only screen and (max-width: $bp-medium) {
+            flex-direction: column;
+            margin-top: 2rem;
+        }
         &-title{ 
             display: flex;
             flex-direction: column;
@@ -24,24 +35,59 @@
                 margin-top: -2rem;
                 margin-left: -1.5rem;
                 background-color: $color-white;
+                @media only screen and (max-width: $bp-medium) {
+                    margin-left: -5rem;
+                }
+                @media only screen and (max-width: $bp-smallest) {
+                    margin-left: -1.5rem;
+                }
+            }
+            .openicon{
+                margin-left:.5rem;
+                @media only screen and (max-width: $bp-large) {
+                   margin-bottom: 2rem;
+                }
+                @media only screen and (max-width: $bp-medium) {
+                    margin-left: -4rem;
+                    margin-bottom: 0rem;
+                }
             }
             &-maintitle{
                 display: flex;
                 flex-direction: column;
                 padding-left: 4rem;
                 margin-top: -1.5rem;
+                @media only screen and (max-width: $bp-large) {
+                    padding-left: 2rem;
+                }
                 .title{
                     display: flex;
                     align-items: center;
+                    @media only screen and (max-width: $bp-large) {
+                        width: 15rem;
+                    }
+                    .staricon{
+                        @media only screen and (max-width: $bp-large) {
+                            margin-left: -3rem;
+                        }
+                    }
                     p{
                         font-size: 3rem;
                         color: rgba($color: #000000, $alpha: .7);
                         font-weight: 550;
+                        @media only screen and (max-width: $bp-large) {
+                            font-size: 2.5rem;
+                            line-height: 2.5rem;
+                        }
                     }
                 }
                 p{
                     font-size: 1.4rem;
                     color: $color-grey-dark-1;
+                    @media only screen and (max-width: $bp-large) {
+                        font-size: 1rem;
+                        margin-top: .4rem;
+                    }
                 }
             }
         }
@@ -49,7 +95,13 @@
             display: flex;
             height: 5rem;
             position: relative;
+            @media only screen and (max-width: $bp-verysmall) {
+                flex-wrap: wrap;
+            }
             .overtop{
+                @media only screen and (max-width: $bp-large) {
+                    margin-top: -1rem;
+                }
                 .overtopsvg{
                     width: 3rem;
                     height: 3rem;
@@ -59,6 +111,9 @@
                     border:1.5px solid $color-blue;
                     border-radius: 100px;
                     background-color: $color-white;
+                    @media only screen and (max-width: $bp-large) {
+                        margin-right: .5rem;
+                    }
                 }
             }
             .hexagon-outline-box{
@@ -70,6 +125,13 @@
                 background-color: $color-grey-light-4;
                 clip-path: polygon(20% 0, 80% 0, 100% 50%, 80% 100%, 20% 100%, 0% 50%);
                 -webkit-clip-path: polygon(20% 0, 80% 0, 100% 50%, 80% 100%, 20% 100%, 0% 50%);
+                @media only screen and (max-width: $bp-large) {
+                    width: 66px;
+                    height: 30px;
+                }
+                @media only screen and (max-width: $bp-smallest) {
+                    margin-right: .5rem;
+                }
                 .hexagon-outline{
                     display: flex;
                     position: absolute;
@@ -85,6 +147,12 @@
                     font-size: 2rem;
                     clip-path: polygon(20% 0, 80% 0, 100% 50%, 80% 100%, 20% 100%, 0% 50%);
                     -webkit-clip-path: polygon(20% 0, 80% 0, 100% 50%, 80% 100%, 20% 100%, 0% 50%);
+                    @media only screen and (max-width: $bp-large) {
+                        width: 63px;
+                        height: 27px;
+                        font-size: 1.5rem;
+                        left:-10px;
+                    }
                     .black{
                         margin-left: .8rem;
                     }
@@ -102,6 +170,15 @@
                 margin-right: 1.5rem;
                 display: flex;
                 align-items: center;
+                @media only screen and (max-width: $bp-large) {
+                    padding: 0rem 1rem;
+                    margin-right: 1rem;
+                    height: 3rem;
+                }
+                @media only screen and (max-width: $bp-smallest) {
+                    margin-right: .5rem;
+                    padding: 0rem 0rem;
+                }
                 .zoom{
                     width: 2rem;
                     height: 2rem;
@@ -113,6 +190,10 @@
                 p{
                     font-size: 1.4rem;
                     margin-left: .5rem;
+                    @media only screen and (max-width: $bp-large) {
+                        font-size: 1.2rem;
+                        line-height: 1.2rem;
+                    }
                 }
             }
             .activities{
@@ -122,16 +203,28 @@
                 padding: .4rem .5rem;
                 border-radius: 5px;
                 color: $color-black-light;
+                @media only screen and (max-width: $bp-large) {
+                    height: 3rem;
+                    padding: .2rem .3rem;
+                }
                 .people{
                     display: flex;
                     align-items: center;
                     font-size: 2rem;
                     border-right: $line;
                     margin: 0rem .4rem;
+                    @media only screen and (max-width: $bp-large) {
+                        font-size: 1.4rem;
+                        margin: 0 .2rem;
+                    }
                     p{
                         margin-right:1rem;
                         font-size: 1.4rem;
                         margin-left: .3rem;
+                        @media only screen and (max-width: $bp-large) {
+                            font-size: 1rem;
+                            margin-right: .5rem;
+                        }
                     }
                 }
                 .activity{
@@ -139,14 +232,20 @@
                     align-items: center;
                     font-size: 2rem;
                     margin: 0rem .4rem;
+                    @media only screen and (max-width: $bp-large) {
+                        font-size: 1.5rem;
+                    }
                     p{
                         font-size: 1.4rem;
                         margin: 0rem .2rem;
+                        @media only screen and (max-width: $bp-large) {
+                            font-size: 1rem;
+                        }
                     }
                 }
+                
             }
         }
-        
     }
     &__bottom{
         display: flex;
@@ -154,6 +253,12 @@
         height: 5rem;
         margin-bottom: .5rem;
         margin-top: -2rem;
+        @media only screen and (max-width: $bp-medium) {
+            flex-direction: column;
+            align-items: center;
+            margin-top: -.5rem;
+        }
+        
         &-maintable{
             display: flex;
             align-items: center;
@@ -161,11 +266,20 @@
             h3{
                 font-size: 1.6rem;
                 font-weight: 400;
+                @media only screen and (max-width: $bp-large) {
+                    font-size: 1.2rem;
+                }
+            }
+            @media only screen and (max-width: $bp-smallest) {
+                margin-left: 25rem;
             }
         }
         &-actions{
             display: flex;
             align-items: center;
+            @media only screen and (max-width: $bp-medium) {
+                margin-top: 1rem;
+            }
             .new-item{
                 display: flex;
                 align-items: center;
@@ -173,12 +287,19 @@
                 padding: 0rem 3rem 0rem 1.5rem;
                 background-color: $color-blue-light;
                 border-radius: 50px;
+                @media only screen and (max-width: $bp-large) {
+                    height: 2.5rem;
+                    padding: 0rem 2rem 0rem .5rem;
+                }
                 p{
                     font-size: 1.6rem;
                     height: 100%;
                     color: $color-white;
                     padding: 0.5rem 1rem 0.5rem 0rem;
                     border-right: 1px solid $color-blue;
+                    @media only screen and (max-width: $bp-large) {
+                        font-size: 1.3rem;
+                    }
                 }
             }
             .search{
@@ -194,9 +315,29 @@
                     &::-webkit-input-placeholder {
                         color: $color-grey-light-6;
                     }
+                    @media only screen and (max-width: $bp-large) {
+                        height: 2.5rem;
+                        font-size: 1.2rem;
+                        width: 15rem;
+                    }
                 }
             }
         }
     }
     
+}
+
+.three-dots{
+    margin-left:1.2rem;
+    margin-right:2.5rem;
+    margin-top:.6rem;
+    @media only screen and (max-width: $bp-large) {
+        margin-right: 1rem;
+        margin-left: .7rem;
+        margin-top: .3rem;
+    }
+    @media only screen and (max-width: $bp-smallest) {
+        margin-left: .4rem;
+        margin-right: .4rem;
+    }
 }

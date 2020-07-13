@@ -47,6 +47,7 @@ $bp-largest: 75em;     // 1200px
 $bp-large: 68.75em;    // 1100px
 $bp-medium: 56.25em;   // 900px 
 $bp-small: 45.5em;     // 720px
+$bp-verysmall:38em;
 $bp-smallest: 31.25em; // 500px
 
 *,
@@ -60,6 +61,10 @@ $bp-smallest: 31.25em; // 500px
 html {
     box-sizing: border-box;
     font-size: 62.5%;
+    @media only screen and (max-width: $bp-medium) {
+        font-size: 50%;
+    }
+
 }
 
 body {

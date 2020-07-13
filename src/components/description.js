@@ -1,5 +1,6 @@
-import React from 'react'
+import React,{useState} from 'react'
 import { AiOutlineLeftCircle } from 'react-icons/ai'
+import { AiOutlineRightCircle } from 'react-icons/ai'
 import { BsStarFill } from 'react-icons/bs'
 import { FaUserCircle } from 'react-icons/fa'
 import { FaRegUserCircle } from 'react-icons/fa'
@@ -15,18 +16,23 @@ import { AiFillEyeInvisible } from 'react-icons/ai'
 import { MdSort } from 'react-icons/md'
 
 
-const Description = () =>{
+const Description = props =>{
+    const [iconStatus,changeIconStatus] = useState(false)
+    const changeStatus = ()=>{
+        props.status()
+        changeIconStatus(!iconStatus)
+    }
     return(
     <div className="description">
         <div className="description__top">
             <div className="description__top-title">
-                <AiOutlineLeftCircle className="title-icon black-light"/>
+                {!iconStatus?<AiOutlineLeftCircle onClick={changeStatus} className="title-icon black-light"/>:<AiOutlineRightCircle onClick={changeStatus} className="title-icon black-light openicon"/>}
                 <div className="description__top-title-maintitle">
                     <div className="title" >
                         <p>
                             Web design
                         </p>
-                        <BsStarFill className="icon-medium black grey-light"/>
+                        <BsStarFill className="icon-medium black grey-light staricon"/>
                     </div>
                     <p>
                         Add board description
@@ -66,7 +72,7 @@ const Description = () =>{
                         </span><p>1</p>
                     </div>
                 </div>
-                <BsThreeDots style={{marginLeft:"1.2rem",marginRight:"2.5rem",marginTop:".6rem"}} className="icon-small black-light"/>
+                <BsThreeDots className="icon-small black-light three-dots"/>
             </div>
         </div>
         <div className="description__bottom">

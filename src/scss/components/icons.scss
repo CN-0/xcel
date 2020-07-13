@@ -14,6 +14,11 @@
     height: 2.8rem;
     color: $color-grey-light-1;
     padding-right: .5rem;
+    @media only screen and (max-width: $bp-large) {
+        width: 2rem;
+        height: 2rem;
+        padding-right: .2rem;
+    }
 }
 .icon-medium{
     width: 4.2rem;
@@ -35,6 +40,10 @@
         width: 10px;
         height: 10px;
         z-index: 1;
+    }
+    @media only screen and (max-width: $bp-medium) {
+        width: 35px;
+        height: 35px;
     }
 }
  

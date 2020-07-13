@@ -1,4 +1,4 @@
-import React,{useState} from 'react'
+import React,{useState,useEffect} from 'react'
 import { IoMdArrowDropdownCircle } from 'react-icons/io'
 import { BsChat } from 'react-icons/bs'
 import { IoMdAddCircle } from 'react-icons/io'
@@ -21,6 +21,34 @@ const Todo = () =>{
     const [rowData,setRowData] = useState({})
     const [statusData, setStatusData] = useState({})
 
+    useEffect(()=>{
+            dragElement(document.getElementById("todo-row"));
+
+            function dragElement(elmnt) {
+                let pos1 = 0, pos3 = 0;
+                elmnt.onmousedown = dragMouseDown;
+
+            function dragMouseDown(e) {
+                e = e || window.event;
+                pos3 = e.clientX;
+                document.onmouseup = closeDragElement;
+                document.onmousemove = elementDrag;
+            }
+
+            function elementDrag(e) {
+                e = e || window.event;
+                e.preventDefault();
+                pos1 = pos3 - e.clientX;
+                pos3 = e.clientX;
+                elmnt.style.left = (elmnt.offsetLeft - pos1) + "px";
+            }
+
+            function closeDragElement() {
+                document.onmouseup = null;
+                document.onmousemove = null;
+            }
+            }
+    },[])
     const addRow = () =>{
         document.getElementById("addButton").setAttribute("disabled",true)
         setRows(rows=>rows+1)
@@ -130,7 +158,7 @@ const Todo = () =>{
                     :null}
                 </div>
                 <div className="todo-content-box">
-                    <div className="todo__row">
+                    <div  id="todo-row" className="todo__row">
                         <div className="todo__row-content">
                             {columns.map((column,index)=>{
                                 if(column[0]==="People"){
@@ -143,8 +171,8 @@ const Todo = () =>{
                         <div>
                         {Object.keys(rowData).length>0?Object.keys(rowData).map(row=>{
                             return(
-                                <div key={row} className="todo__row">
-                                    <div  id={`contentDiv${row}`} className="todo__row-content">
+                                
+                                    <div key={row}  id={`contentDiv${row}`} className="todo__row-content">
                                         {columns.map((column,index)=>{
                                             if(column[0]==="People"){
                                                 return (
@@ -184,10 +212,10 @@ const Todo = () =>{
                                             }
                                         })}
                                     </div>
-                                </div>)
+                                )
                         }):null}
                         </div>
-                        <div>
+                        <div >
                         {showAddRow?
                             <form type="submit" id="form-content"  onSubmit={newRowData} className="todo__row">
                                 <div className="todo__row-content">
